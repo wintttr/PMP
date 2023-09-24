@@ -1,0 +1,62 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+interface car.IConditionable {
++ void inConditioner()
++ void outConditioner()
+}
+
+interface car.IStartable {
++ void start()
++ void stop()
+}
+
+class car.HomeBrand {
+- int color
++ boolean equals(Object)
++ String toString()
++ void start()
++ void stop()
++ void inConditioner()
++ void outConditioner()
++ int getColor()
++ void setColor(int)
+}
+
+class car.InBrand {
+- int equipmentType
++ boolean equals(Object)
++ String toString()
++ int getEquipmentType()
++ void setEquipmentType(int)
+}
+abstract class car.Car {
+- String brand
+- int issueYear
+- double engineCapacity
+- String transmissionType
+- double base
++ void inConditioner()
++ void outConditioner()
++ void start()
++ void stop()
++ boolean equals(Object)
++ String toString()
++ String getBrand()
++ void setBrand(String)
++ int getIssueYear()
++ void setIssueYear(int)
++ double getEngineCapacity()
++ void setEngineCapacity(double)
++ String getTransmissionType()
++ void setTransmissionType(String)
++ double getBase()
++ void setBase(double)
+}
+
+
+car.Car <|-- car.HomeBrand
+car.Car <|-- car.InBrand
+car.IStartable <|.. car.Car
+car.IConditionable <|.. car.Car
+@enduml
