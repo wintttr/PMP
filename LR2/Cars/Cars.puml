@@ -1,0 +1,43 @@
+@startuml
+class car.HomeBrand {
+- int color
++ boolean equals(Object)
++ String toString()
++ int getColor()
++ void setColor(int)
+}
+abstract class car.Car {
+- String brand
+- int issueYear
+- double engineCapacity
+- String transmissionType
+- double base
++ boolean equals(Object)
++ String toString()
++ void stat()
++ void stop()
++ void inConditioner()
++ void outConditioner()
++ String getBrand()
++ void setBrand(String)
++ int getIssueYear()
++ void setIssueYear(int)
++ double getEngineCapacity()
++ void setEngineCapacity(double)
++ String getTransmissionType()
++ void setTransmissionType(String)
++ double getBase()
++ void setBase(double)
+}
+class car.InBrand {
+- int equipmentType
++ boolean equals(Object)
++ String toString()
++ int getEquipmentType()
++ void setEquipmentType(int)
+}
+
+
+car.Car <|-- car.HomeBrand
+car.Car <|-- car.InBrand
+@enduml
