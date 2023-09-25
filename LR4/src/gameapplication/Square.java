@@ -13,6 +13,14 @@ public class Square {
         this.score = sq.score;
     }
 
+    static public Square Doubled(Square sq) {
+        return new Square(sq.score * 2);
+    }
+
+    static public Square Zero() {
+        return new Square(0);
+    }
+
     public int getScore() {
         return score;
     }

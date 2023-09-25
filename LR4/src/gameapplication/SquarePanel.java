@@ -24,10 +24,6 @@ public class SquarePanel extends JPanel {
         updateBody();
     }
 
-    public Square getSquare() {
-        return square;
-    }
-
     public void updateBody() {
         if(square.getScore() > 0) {
             scoreLabel.setText(String.valueOf(square.getScore()));
@@ -50,10 +46,6 @@ public class SquarePanel extends JPanel {
         add(scoreLabel, BorderLayout.CENTER);
 
         setSquare(square);
-    }
-
-    public static Square EmptySquare() {
-        return new Square(0);
     }
 
     @Override

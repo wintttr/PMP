@@ -9,7 +9,7 @@ public class BattlefieldPanel extends JPanel {
     private SquarePanel[][] field;
     private Battlefield bf;
     public BattlefieldPanel(int rowCount, int colCount) {
-        bf = new Battlefield(rowCount, colCount, SquarePanel.EmptySquare());
+        bf = new Battlefield(rowCount, colCount);
         field = new SquarePanel[rowCount][colCount];
 
         for(int i = 0; i < rowCount; i++) {
@@ -24,28 +24,30 @@ public class BattlefieldPanel extends JPanel {
         setBorder(new EmptyBorder(10, 10, 10, 10));
     }
 
-    public void addRandomSquare(Random rand) {
-        Pair p = bf.addRandomSquare(rand);
-        updateSquare(p.x(), p.y());
+    public boolean addRandomSquare(Random rand) {
+        boolean result = bf.addRandomSquare(rand);
+        updateField();
+
+        return result;
     }
 
     public void left() {
-        bf.moveLeftAndShrink();
+        bf.left();
         updateField();
     }
 
     public void right() {
-        bf.moveRightAndShrink();
+        bf.right();
         updateField();
     }
 
     public void up() {
-        bf.moveUpAndShrink();
+        bf.up();
         updateField();
     }
 
     public void down() {
-        bf.moveDownAndShrink();
+        bf.down();
         updateField();
     }
 
@@ -58,7 +60,20 @@ public class BattlefieldPanel extends JPanel {
         repaint();
     }
 
+    public int scoreSum() {
+        return bf.scoreSum();
+    }
+
+    public boolean canMove() {
+        return bf.canMove();
+    }
+
     public void updateSquare(int x, int y) {
         field[x][y].setSquare(bf.get(x, y));
+    }
+
+    public void startGame(Random random) {
+        bf.fillEmpty();
+        addRandomSquare(random);
     }
 }
